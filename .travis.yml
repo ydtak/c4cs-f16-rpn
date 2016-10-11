@@ -3,5 +3,5 @@ python:
  - "3.5"
 
 # command to run tests
-script: test_rpn.py
+script: ./test_rpn.py
 
