@@ -13,8 +13,8 @@ class TestBasics(unittest.TestCase):
 		self.assertEqual(2, result)
 	
 	def test_badstring(self):
-		result = rpn.calculate("1 2 3 +")
-		self.assertEqual("Invalid", result)
+		with self.assertRaises(TypeError):
+			rpn.calculate("1 2 3 +")
 
 	def test_multiply(self):
 		result = rpn.calculate("2 3 *")

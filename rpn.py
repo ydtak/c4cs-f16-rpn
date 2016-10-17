@@ -12,11 +12,6 @@ operators = {
 	'%': operator.mod
 }
 
-def handleError(stack):
-	print("Too many parameters!")
-	while len(stack) > 1:
-		stack.pop()
-
 def calculate(myarg):
 	stack = []
 	for token in myarg.split():
@@ -31,8 +26,7 @@ def calculate(myarg):
 			stack.append(result)
 		print(stack)
 	if len(stack) != 1:
-		handleError(stack)
-		return "Invalid"
+		raise TypeError("Too many parameters!")
 	return stack.pop()
 
 def main():
