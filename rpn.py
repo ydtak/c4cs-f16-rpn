@@ -2,6 +2,7 @@
 
 import operator
 import readline
+import logging
 
 
 help_message = """
@@ -36,12 +37,14 @@ def calculate(myarg, last_result = 0):
 			arg1 = stack.pop()
 			result = function(arg1, arg2)
 			stack.append(result)
-		print(stack)
+		logging.info(stack)
+		# print(stack)
 	if len(stack) != 1:
 		raise TypeError("Too many parameters!")
 	return stack.pop()
 
 def main():
+	logging.basicConfig(filename="rpn.log", level=logging.INFO)
 	result = 0
 	finished = False
 	while not finished:
