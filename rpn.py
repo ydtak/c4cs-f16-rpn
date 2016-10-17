@@ -20,7 +20,7 @@ operators = {
 def help():
 	print(help_message)
 
-def calculate(myarg, last_result):
+def calculate(myarg, last_result = 0):
 	stack = []
 	for token in myarg.split():
 		if token == 'a':
