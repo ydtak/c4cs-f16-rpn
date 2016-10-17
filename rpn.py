@@ -3,6 +3,11 @@
 import operator
 
 
+help_message = """
+'a': use last result output
+'q': quit
+"""
+
 operators = {
 	'+': operator.add,
 	'-': operator.sub,
@@ -12,9 +17,15 @@ operators = {
 	'%': operator.mod
 }
 
-def calculate(myarg):
+def help():
+	print(help_message)
+
+def calculate(myarg, last_result):
 	stack = []
 	for token in myarg.split():
+		if token == 'a':
+			stack.append(last_result)
+			continue
 		try:
 			token = int(token)
 			stack.append(token)
@@ -30,9 +41,17 @@ def calculate(myarg):
 	return stack.pop()
 
 def main():
-	while True:
-		result = calculate(input("rpn calc> "))
-		print("Result: ", result)
+	result = 0
+	finished = False
+	while not finished:
+		cmd = input("rpn calc ('h' for help)> ")
+		if cmd == 'h':
+			help()			
+		elif cmd == 'q':
+			return 0
+		else:
+			result = calculate(cmd, result)
+			print("Result: ", result)
 
 
 if __name__ == "__main__":
