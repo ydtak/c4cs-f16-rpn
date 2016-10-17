@@ -6,6 +6,6 @@ install:
 
 # command to run tests
 script:
-  coverage python3 -m unittest
+  coverage run -m unittest
 after_success:
   coveralls
